@@ -1,0 +1,88 @@
+# Path to your oh-my-zsh installation.
+DISABLE_AUTO_UPDATE="true"
+export ZSH=~/.oh-my-zsh
+alias dev='source /Users/uu101151/work/python_dev/bin/activate'
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="wedisagree"
+
+# Uncomment the following line to disable colors in ls.
+#DISABLE_LS_COLORS="true"
+
+plugins=(git)
+
+# User configuration
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Applications/Sublime Text.app/Contents/SharedSupport/bin/:/usr/local/share/python:/Library/TeX/texbin/"
+
+source $ZSH/oh-my-zsh.sh
+
+
+autoload -U compinit
+compinit
+
+#自分
+
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+export PATH=$PATH:/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
+export PATH=$PATH:/usr/local/share/python
+export PATH=$PATH:/Library/TeX/texbin/
+export DISABLE_AUTO_UPDATE="false"
+export DJANGO_SETTINGS_MODULE='MasterBoard.settings.development'
+
+function gfab() {
+  git add .;
+  echo $1;
+  git commit -m "$1";
+  git push;
+  fab deploy;
+}
+
+
+
+#custom
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+setopt print_eight_bit
+alias la='ls -a'
+alias ll='ls -l'
+
+# 名前で色を付けるようにする
+autoload colors
+colors
+
+# LS_COLORSを設定しておく
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=48;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+# ファイル補完候補に色を付ける
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+
+# cheat-sheet
+cheat-sheet () { zle -M "`cat ~/zsh/cheat-sheet.conf`" }
+zle -N cheat-sheet
+bindkey "^[^h" cheat-sheet
+
+git-cheat () { zle -M "`cat ~/zsh/git-cheat.conf`" }
+zle -N git-cheat
+bindkey "^[^g" git-cheat
+
+
+
+
+
+
+
+
+
+
+
+
+
+

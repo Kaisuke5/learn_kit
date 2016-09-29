@@ -1,0 +1,5 @@
+alias dev='source /Users/uu101151/work/python_dev/bin/activate'
+alias ls='ls -l'
+alias rm='rm -r'
+alias pyml='source /Users/uu101151/work/python_dev/bin/activate'
+zsh
